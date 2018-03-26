@@ -1,3 +1,4 @@
+# coding=utf-8
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -9,7 +10,7 @@ import platform
 class bihu_auto_upvote(unittest.TestCase):
     def setUp(self):
         systerm = platform.platform()
-        print( "打开chrome" )
+        print( "open chrome" )
         if 'Darwin' in systerm:
             driver = webdriver.Chrome( '/Users/Hebbelu/Public/chromedriver' )
         else:
@@ -25,14 +26,14 @@ class bihu_auto_upvote(unittest.TestCase):
     def test_get_jingma(self):
         driver = self.driver
 
-        print( "打开金马bihu.com/9909" )
+        print( "open:bihu.com/9909" )
         driver.get( 'https://bihu.com/people/9909' )
         c1, c2 = self._findelement()
         print( c1, "\n", c2 )
 
         for i in range(5):
             try:
-                print( "第", i, "次查询，延时10s" )
+                print("i=",i )
                 c11, c22 = self._findelement()
                 if (c1 != c11):
                     c1 = c11
@@ -42,7 +43,7 @@ class bihu_auto_upvote(unittest.TestCase):
                 driver.refresh()
                 time.sleep( 10 )
             except:
-                print('查询异常')
+                print('findelement error')
                 time.sleep( 10 )
 
 
